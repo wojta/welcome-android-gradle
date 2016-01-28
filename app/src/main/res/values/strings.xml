@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">welcome-android-app</string>
+
+    <!-- Drawer -->
+    <string name="home">Home</string>
+    <string name="call_cloud">Call cloud</string>
+    <string name="push_notification">Push notification</string>
+    <string name="data_browser">Data browser</string>
+    <string name="native_app_info">Native App Info</string>
+    <string name="cloud_integration">Cloud integration</string>
+    <string name="statistics">Statistics</string>
 </resources>
