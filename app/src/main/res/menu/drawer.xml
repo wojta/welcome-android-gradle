@@ -6,6 +6,7 @@
 
         <item
             android:id="@+id/drawer_home"
+            android:checked="true"
             android:icon="@drawable/ic_home"
             android:title="@string/home"/>
 

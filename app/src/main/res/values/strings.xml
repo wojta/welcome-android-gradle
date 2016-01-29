@@ -9,4 +9,13 @@
     <string name="native_app_info">Native App Info</string>
     <string name="cloud_integration">Cloud integration</string>
     <string name="statistics">Statistics</string>
+
+    <!-- Home Fragment -->
+    <string name="home_title">Welcome to\nFeedHenry</string>
+    <string name="home_subtitle">Learn about and interact with our platform</string>
+
+    <!-- Statistics -->
+    <string name="statistics_text">In addition to all of our app install/usage analytics, you can also instrument your cloud code to see exactly how it\'s performing. Go to the stats section of the Studio and see if your device has been detected</string>
+
 </resources>
+
