@@ -7,12 +7,30 @@
     <string name="push_notification">Push notification</string>
     <string name="data_browser">Data browser</string>
     <string name="native_app_info">Native App Info</string>
-    <string name="cloud_integration">Cloud integration</string>
+    <string name="cloud_integrations">Cloud integrations</string>
     <string name="statistics">Statistics</string>
 
     <!-- Home Fragment -->
     <string name="home_title">Welcome to\nFeedHenry</string>
     <string name="home_subtitle">Learn about and interact with our platform</string>
+    <string name="location_example">Location Example</string>
+
+    <!-- Call Cloud -->
+    <string name="cloud_action_text">This client app is now connected to its matching Node.js cloud code on FeedHenry. Tap the button to request a response from the cloud.</string>
+
+    <!-- Push Notifications -->
+    <string name="comming_soon">Comming soon!</string>
+
+    <!-- Location -->
+    <string name="location_text">Let\'s grab your location and do something with it. Tap the button to find your location.</string>
+    <string name="get_my_location">Get My Location</string>
+
+    <!-- Data Browser -->
+    <string name="data_browser_text">First go to the Data Browser menu in your cloud code in the Studio and enable it. Then enter your name here and tap the button to save your name in our cloud database.</string>
+    <string name="save">Save</string>
+
+    <!-- Cloud Integrations -->
+    <string name="integrations_text">You can easily integrate with all of your existing back-end systems using Cloud Plugins. Check out the App Studio to see how to connect to Databases, Messaging, Analytics, SaaS, eCommerce, Logging, Data Storage, Testing Tools and File Storage. A few examples including</string>
 
     <!-- Statistics -->
     <string name="statistics_text">In addition to all of our app install/usage analytics, you can also instrument your cloud code to see exactly how it\'s performing. Go to the stats section of the Studio and see if your device has been detected</string>

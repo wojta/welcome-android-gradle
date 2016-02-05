@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/white"
               android:orientation="vertical"
               android:padding="10dp">
 
@@ -11,12 +10,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/statistics"/>
+        android:text="@string/data_browser"/>
 
     <TextView
         style="@style/text_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/statistics_text"/>
+        android:text="@string/data_browser_text"/>
+
+    <EditText
+        android:id="@+id/data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save"/>
 
 </LinearLayout>

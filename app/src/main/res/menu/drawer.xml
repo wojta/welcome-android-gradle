@@ -22,6 +22,11 @@
             android:title="@string/push_notification"/>
 
         <item
+            android:id="@+id/drawer_location"
+            android:icon="@drawable/ic_location"
+            android:title="@string/location_example"/>
+
+        <item
             android:id="@+id/drawer_data"
             android:icon="@drawable/ic_data"
             android:title="@string/data_browser"/>
@@ -34,7 +39,7 @@
         <item
             android:id="@+id/drawer_integration"
             android:icon="@drawable/ic_integration"
-            android:title="@string/cloud_integration"/>
+            android:title="@string/cloud_integrations"/>
 
         <item
             android:id="@+id/drawer_statistics"

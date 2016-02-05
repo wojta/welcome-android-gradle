@@ -13,7 +13,13 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import org.feedhenry.welcome.fragments.CloudFragment;
+import org.feedhenry.welcome.fragments.DataBrowerFragment;
 import org.feedhenry.welcome.fragments.HomeFragment;
+import org.feedhenry.welcome.fragments.IntegrationFragment;
+import org.feedhenry.welcome.fragments.LocationFragment;
+import org.feedhenry.welcome.fragments.NativeAppInfoFragment;
+import org.feedhenry.welcome.fragments.PushFragment;
 import org.feedhenry.welcome.fragments.StatisticsFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,6 +57,24 @@ public class MainActivity extends AppCompatActivity {
 				switch (menuItem.getItemId()) {
 					case R.id.drawer_home:
 						fragment = new HomeFragment();
+						break;
+					case R.id.drawer_cloud:
+						fragment = new CloudFragment();
+						break;
+					case R.id.drawer_push:
+						fragment = new PushFragment();
+						break;
+					case R.id.drawer_location:
+						fragment = new LocationFragment();
+						break;
+					case R.id.drawer_data:
+						fragment = new DataBrowerFragment();
+						break;
+					case R.id.drawer_info:
+						fragment = new NativeAppInfoFragment();
+						break;
+					case R.id.drawer_integration:
+						fragment = new IntegrationFragment();
 						break;
 					case R.id.drawer_statistics:
 						fragment = new StatisticsFragment();
