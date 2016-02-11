@@ -13,9 +13,14 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.feedhenry.sdk.FH;
+import com.feedhenry.sdk.FHActCallback;
+import com.feedhenry.sdk.FHResponse;
+
 import org.feedhenry.welcome.fragments.CloudFragment;
 import org.feedhenry.welcome.fragments.DataBrowerFragment;
 import org.feedhenry.welcome.fragments.HomeFragment;
+import org.feedhenry.welcome.fragments.InitFragment;
 import org.feedhenry.welcome.fragments.IntegrationFragment;
 import org.feedhenry.welcome.fragments.LocationFragment;
 import org.feedhenry.welcome.fragments.NativeAppInfoFragment;
@@ -24,7 +29,7 @@ import org.feedhenry.welcome.fragments.StatisticsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-	private static final String LOG = MainActivity.class.getSimpleName();
+	private static final String TAG = MainActivity.class.getSimpleName();
 
 	private DrawerLayout drawerLayout;
 
@@ -98,10 +103,34 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+
 		getSupportFragmentManager()
 				.beginTransaction()
-				.replace(R.id.content, new HomeFragment())
+				.replace(R.id.content, new InitFragment())
 				.commit();
+
+		FH.init(getApplicationContext(), new FHActCallback() {
+			@Override
+			public void success(FHResponse fhResponse) {
+				getSupportFragmentManager()
+						.beginTransaction()
+						.replace(R.id.content, new HomeFragment())
+						.commit();
+			}
+
+			@Override
+			public void fail(FHResponse fhResponse) {
+				Log.d(TAG, "init - fail");
+				Log.e(TAG, fhResponse.getErrorMessage(), fhResponse.getError());
+				Toast.makeText(getApplicationContext(), R.string.error_initialize_app,
+						Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 
 }
