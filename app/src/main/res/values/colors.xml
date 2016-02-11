@@ -3,7 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="white">#FFFFFF</color>
 
     <color name="home_title_background">#3d3c3a</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#777777</color>
 </resources>

@@ -18,6 +18,8 @@
 
     <!-- Call Cloud -->
     <string name="cloud_action_text">This client app is now connected to its matching Node.js cloud code on FeedHenry. Tap the button to request a response from the cloud.</string>
+    <string name="response">Response: %1$s</string>
+    <string name="cloud_response_text">Now check your stats page in the studio to check that this cloud call happened.</string>
 
     <!-- Push Notifications -->
     <string name="comming_soon">Comming soon!</string>
