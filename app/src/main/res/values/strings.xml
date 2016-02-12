@@ -34,6 +34,13 @@
     <!-- Data Browser -->
     <string name="data_browser_text">First go to the Data Browser menu in your cloud code in the Studio and enable it. Then enter your name here and tap the button to save your name in our cloud database.</string>
     <string name="save">Save</string>
+    <string name="data_saved">Yay, Your data was saved in the cloud</string>
+
+    <!-- Native App Info -->
+    <string name="cloud_port">Port: </string>
+    <string name="cloud_env">Env: </string>
+    <string name="cloud_domain">Domain: </string>
+    <string name="cloud_app_name">App name: </string>
 
     <!-- Cloud Integrations -->
     <string name="integrations_text">You can easily integrate with all of your existing back-end systems using Cloud Plugins. Check out the App Studio to see how to connect to Databases, Messaging, Analytics, SaaS, eCommerce, Logging, Data Storage, Testing Tools and File Storage. A few examples including</string>
