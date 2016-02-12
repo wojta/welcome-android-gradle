@@ -25,8 +25,11 @@
     <string name="comming_soon">Comming soon!</string>
 
     <!-- Location -->
-    <string name="location_text">Let\'s grab your location and do something with it. Tap the button to find your location.</string>
-    <string name="get_my_location">Get My Location</string>
+    <string name="location_text">Let\'s grab your location and do something with it.</string>
+    <string name="get_weather">Get weather</string>
+    <string name="temperature">%1$s°C</string>
+    <string name="latitude">Latitude:</string>
+    <string name="longitude">Longitude:</string>
 
     <!-- Data Browser -->
     <string name="data_browser_text">First go to the Data Browser menu in your cloud code in the Studio and enable it. Then enter your name here and tap the button to save your name in our cloud database.</string>
