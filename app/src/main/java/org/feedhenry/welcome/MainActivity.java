@@ -86,16 +86,13 @@ public class MainActivity extends AppCompatActivity {
 						break;
 				}
 
-				if ((fragment != null && (!menuItem.isChecked()))) {
+				if (fragment != null) {
 					FragmentManager fragmentManager = getSupportFragmentManager();
 					fragmentManager.beginTransaction()
 							.replace(R.id.content, fragment)
-							.addToBackStack(null).commit();
+							.commit();
 
 					menuItem.setChecked(true);
-				} else {
-					Toast.makeText(getApplicationContext(),
-							"This feature is not implemented yet", Toast.LENGTH_SHORT).show();
 				}
 
 				drawerLayout.closeDrawers();
