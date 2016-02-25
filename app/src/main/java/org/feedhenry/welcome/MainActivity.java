@@ -114,10 +114,7 @@ public class MainActivity extends AppCompatActivity {
 		FH.init(getApplicationContext(), new FHActCallback() {
 			@Override
 			public void success(FHResponse fhResponse) {
-				getSupportFragmentManager()
-						.beginTransaction()
-						.replace(R.id.content, new HomeFragment())
-						.commit();
+				navigateTo(new HomeFragment());
 			}
 
 			@Override
@@ -128,6 +125,29 @@ public class MainActivity extends AppCompatActivity {
 						Toast.LENGTH_SHORT).show();
 			}
 		});
+	}
+
+	private void navigateTo(Fragment fragment) {
+		getSupportFragmentManager()
+				.beginTransaction()
+				.replace(R.id.content, fragment)
+				.commit();
+	}
+
+	public void navigateToCallCloud() {
+		navigateTo(new CloudFragment());
+	}
+
+	public void navigateToPushNotification() {
+		navigateTo(new PushFragment());
+	}
+
+	public void navigateToLocation() {
+		navigateTo(new LocationFragment());
+	}
+
+	public void navigateToDataBrowser() {
+		navigateTo(new DataBrowerFragment());
 	}
 
 }
