@@ -37,10 +37,18 @@
     <string name="data_saved">Yay, Your data was saved in the cloud</string>
 
     <!-- Native App Info -->
-    <string name="cloud_port">Port: </string>
-    <string name="cloud_env">Env: </string>
-    <string name="cloud_domain">Domain: </string>
+    <string name="about_this_device">About this device</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="model">Model</string>
+    <string name="product">Product</string>
+    <string name="serial">Serial</string>
+    <string name="cpu">CPU</string>
+    <string name="host">Host</string>
+    <string name="the_could_host">The could host</string>
     <string name="cloud_app_name">App name: </string>
+    <string name="cloud_domain">Domain: </string>
+    <string name="cloud_env">Env: </string>
+    <string name="cloud_port">Port: </string>
 
     <!-- Cloud Integrations -->
     <string name="integrations_text">You can easily integrate with all of your existing back-end systems using Cloud Plugins. Check out the App Studio to see how to connect to Databases, Messaging, Analytics, SaaS, eCommerce, Logging, Data Storage, Testing Tools and File Storage. A few examples including</string>
