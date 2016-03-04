@@ -1,14 +1,14 @@
 # welcome-android-gradle
 ---------
-Author: Daniel Passos (passos@redhat.com)
-Level: Intermediate
-Technologies: Java, Android, RHMAP
-Summary: A sampling of features offered by RHMAP and the FeedHenry SDK
-Community Project : [Feed Henry](http://feedhenry.org)
-Target Product: RHMAP
-Product Versions: RHMAP 3.8.0+
-Source: https://github.com/feedhenry-templates/welcome-android-gradle
-Prerequisites: fh-android-sdk : 3.0.+, Android Studio : 1.4.0 or newer, Android SDK : 22+ or newer
+Author: Daniel Passos (dpassos@redhat.com)   
+Level: Intermediate   
+Technologies: Java, Android, RHMAP   
+Summary: A sampling of features offered by RHMAP and the FeedHenry SDK   
+Community Project : [Feed Henry](http://feedhenry.org)   
+Target Product: RHMAP   
+Product Versions: RHMAP 3.8.0+   
+Source: https://github.com/feedhenry-templates/welcome-android-gradle   
+Prerequisites: fh-android-sdk : 3.0.+, Android Studio : 1.4.0 or newer, Android SDK : 22+ or newer   
 
 ## What is it?
 
