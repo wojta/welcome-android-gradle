@@ -228,7 +228,7 @@
     <string name="cloud_response_text">Now check your stats page in the studio to check that this cloud call happened.</string>
 
     <!-- Push Notifications -->
-    <string name="comming_soon">Comming soon!</string>
+    <string name="coming_soon">Coming soon!</string>
 
     <!-- Location -->
     <string name="location_text">Let\'s grab your location and do something with it.</string>
