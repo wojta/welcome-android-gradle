@@ -5,15 +5,15 @@ dist: precise
 
 jdk:
   - oraclejdk8
-  - oraclejdk7
 
 android:
   components:
     - platform-tools
     - tools
-    - build-tools-23.0.2
+    - build-tools-24.0.3
     - android-22
     - android-23
+    - android-24
     - extra-google-m2repository
     - extra-android-m2repository
     - extra-android-support
@@ -21,6 +21,8 @@ licenses:
     - android-sdk-license-5be876d5
 
 env:
+  global:
+    - ADB_INSTALL_TIMEOUT=10
   matrix:
     - ANDROID_EMULATOR=android-10 ANDROID_ABI=armeabi     ANDROID_PKGS=sys-img-armeabi-v7a-android-10
     - ANDROID_EMULATOR=android-15 ANDROID_ABI=armeabi-v7a ANDROID_PKGS=sys-img-armeabi-v7a-android-15
@@ -30,6 +32,8 @@ env:
     - ANDROID_EMULATOR=android-19 ANDROID_ABI=armeabi-v7a ANDROID_PKGS=sys-img-armeabi-v7a-android-19
     - ANDROID_EMULATOR=android-21 ANDROID_ABI=armeabi-v7a ANDROID_PKGS=sys-img-armeabi-v7a-android-21
     - ANDROID_EMULATOR=android-22 ANDROID_ABI=armeabi-v7a ANDROID_PKGS=sys-img-armeabi-v7a-android-22
+    - ANDROID_EMULATOR=android-23 ANDROID_ABI=armeabi-v7a ANDROID_PKGS=sys-img-armeabi-v7a-android-23
+    - ANDROID_EMULATOR=android-24 ANDROID_ABI=armeabi-v7a ANDROID_PKGS=sys-img-armeabi-v7a-android-24
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
