@@ -31,7 +31,7 @@ If you wish to contribute to this template, the following information may be hel
  * Android SDK : 16+ or newer
 
 ## Build instructions
- * Edit [fhconfig.properties](app/src/main/assets/fhconfig.properties) to include the relevant information from RHMAP.
+ * Edit `app/src/main/assets/fhconfig.properties` to include the relevant information from RHMAP.
  * Attach running Android Device with API 16+ running
  * ./gradlew installDebug
 
