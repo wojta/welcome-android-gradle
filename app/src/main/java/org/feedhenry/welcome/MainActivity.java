@@ -326,8 +326,9 @@ public class MainActivity extends AppCompatActivity {
 			public void fail(FHResponse fhResponse) {
 				Log.d(TAG, "init - fail");
 				Log.e(TAG, fhResponse.getErrorMessage(), fhResponse.getError());
-				Toast.makeText(getApplicationContext(), R.string.error_initialize_app,
+				Toast.makeText(getApplicationContext(), fhResponse.getErrorMessage(),
 						Toast.LENGTH_SHORT).show();
+				finish();
 			}
 		});
 	}
