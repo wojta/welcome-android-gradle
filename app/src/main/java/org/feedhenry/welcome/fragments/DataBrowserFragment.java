@@ -202,168 +202,101 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package org.feedhenry.welcome;
+package org.feedhenry.welcome.fragments;
 
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.NavigationView.OnNavigationItemSelectedListener;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
-
 import com.feedhenry.sdk.FH;
 import com.feedhenry.sdk.FHActCallback;
 import com.feedhenry.sdk.FHResponse;
+import com.feedhenry.sdk.api.FHCloudRequest;
+import org.feedhenry.welcome.R;
+import org.json.fh.JSONObject;
 
-import org.feedhenry.welcome.fragments.CloudFragment;
-import org.feedhenry.welcome.fragments.DataBrowserFragment;
-import org.feedhenry.welcome.fragments.HomeFragment;
-import org.feedhenry.welcome.fragments.InitFragment;
-import org.feedhenry.welcome.fragments.IntegrationFragment;
-import org.feedhenry.welcome.fragments.LocationFragment;
-import org.feedhenry.welcome.fragments.NativeAppInfoFragment;
-import org.feedhenry.welcome.fragments.PushFragment;
-import org.feedhenry.welcome.fragments.StatisticsFragment;
+public class DataBrowserFragment extends android.support.v4.app.Fragment {
 
-public class MainActivity extends AppCompatActivity {
+    private static final String TAG = DataBrowserFragment.class.getSimpleName();
 
-	private static final String TAG = MainActivity.class.getSimpleName();
+    private Button requestButton;
+    private EditText dataEditText;
 
-	private DrawerLayout drawerLayout;
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_data_browser, null);
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+        dataEditText = (EditText) view.findViewById(R.id.data);
+        dataEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-		// -- Toolbar
-		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-		setSupportActionBar(toolbar);
+            }
 
-		// -- Actionbar
-		final ActionBar actionBar = getSupportActionBar();
-		if (actionBar != null) {
-			actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
-			actionBar.setDisplayHomeAsUpEnabled(true);
-		}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-		// -- Drawer & NavigationView
-		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            }
 
-		NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
-		navigationView.setNavigationItemSelectedListener(new OnNavigationItemSelectedListener() {
-			@Override
-			public boolean onNavigationItemSelected(MenuItem menuItem) {
+            @Override
+            public void afterTextChanged(Editable s) {
+                requestButton.setEnabled(s != null && s.length() > 0);
+            }
+        });
+        requestButton = (Button) view.findViewById(R.id.save);
+        requestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveData(dataEditText.getText().toString());
+            }
+        });
 
-				Fragment fragment = null;
+        return view;
+    }
 
-				switch (menuItem.getItemId()) {
-					case R.id.drawer_home:
-						fragment = new HomeFragment();
-						break;
-					case R.id.drawer_cloud:
-						fragment = new CloudFragment();
-						break;
-					case R.id.drawer_push:
-						fragment = new PushFragment();
-						break;
-					case R.id.drawer_location:
-						fragment = new LocationFragment();
-						break;
-					case R.id.drawer_data:
-						fragment = new DataBrowserFragment();
-						break;
-					case R.id.drawer_info:
-						fragment = new NativeAppInfoFragment();
-						break;
-					case R.id.drawer_integration:
-						fragment = new IntegrationFragment();
-						break;
-					case R.id.drawer_statistics:
-						fragment = new StatisticsFragment();
-						break;
-				}
+    private void saveData(String data) {
 
-				if (fragment != null) {
-					FragmentManager fragmentManager = getSupportFragmentManager();
-					fragmentManager.beginTransaction()
-							.replace(R.id.content, fragment)
-							.commit();
+        requestButton.setEnabled(false);
 
-					menuItem.setChecked(true);
-				}
+        FHActCallback callback = new FHActCallback() {
 
-				drawerLayout.closeDrawers();
-				return true;
-			}
-		});
+            @Override
+            public void success(FHResponse fhResponse) {
+                requestButton.setEnabled(true);
+                Toast.makeText(getContext(), R.string.data_saved, Toast.LENGTH_LONG).show();
+                dataEditText.setText("");
+                dataEditText.setFocusable(true);
+            }
 
-	}
+            @Override
+            public void fail(FHResponse fhResponse) {
+                Log.e(TAG, fhResponse.getErrorMessage(), fhResponse.getError());
+                Toast.makeText(getContext(), fhResponse.getErrorMessage(), Toast.LENGTH_SHORT).show();
+                requestButton.setEnabled(true);
+            }
+        };
 
-	@Override
-	protected void onStart() {
-		super.onStart();
+        JSONObject params = new JSONObject();
+        params.put("collection", "Users");
+        JSONObject document = new JSONObject();
+        document.put("data", data);
+        params.put("document", document); // {'collection':'Users', 'document': {'data': $data }}
 
-		getSupportFragmentManager()
-				.beginTransaction()
-				.replace(R.id.content, new InitFragment())
-				.commit();
+        try {
+            FHCloudRequest request = FH.buildCloudRequest("saveData", "POST", null, params);
+            request.executeAsync(callback);
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+        }
 
-		FH.init(getApplicationContext(), new FHActCallback() {
-			@Override
-			public void success(FHResponse fhResponse) {
-				navigateTo(new HomeFragment());
-			}
-
-			@Override
-			public void fail(FHResponse fhResponse) {
-				Log.d(TAG, "init - fail");
-				Log.e(TAG, fhResponse.getErrorMessage(), fhResponse.getError());
-				Toast.makeText(getApplicationContext(), fhResponse.getErrorMessage(),
-						Toast.LENGTH_SHORT).show();
-				finish();
-			}
-		});
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case android.R.id.home:
-				drawerLayout.openDrawer(GravityCompat.START);
-				return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	private void navigateTo(Fragment fragment) {
-		getSupportFragmentManager()
-				.beginTransaction()
-				.replace(R.id.content, fragment)
-				.commit();
-	}
-
-	public void navigateToCallCloud() {
-		navigateTo(new CloudFragment());
-	}
-
-	public void navigateToPushNotification() {
-		navigateTo(new PushFragment());
-	}
-
-	public void navigateToLocation() {
-		navigateTo(new LocationFragment());
-	}
-
-	public void navigateToDataBrowser() {
-		navigateTo(new DataBrowserFragment());
-	}
+    }
 
 }
